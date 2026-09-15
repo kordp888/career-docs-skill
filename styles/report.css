@@ -1,0 +1,147 @@
+/* 포트폴리오 · 보고서 조판 정본 */
+
+@page { size: A4 portrait; margin: 0; }
+
+:root {
+  --ink:   #17171A;
+  --gray:  #63636B;
+  --faint: #9A9AA2;
+  --hair:  #DCDCD8;
+  --rule:  #17171A;
+  --accent:#1B3F8F;
+  --tint:  #F2F4F9;
+  --paper: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "Apple SD Gothic Neo", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-feature-settings: "tnum";
+}
+
+.pg {
+  width: 210mm; height: 297mm;
+  padding: 20mm 22mm 17mm;
+  page-break-after: always;
+  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.pg:last-child { page-break-after: auto; }
+
+/* ── 머리·꼬리 ─────────────────────────── */
+.rh {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 0.45mm solid var(--rule);
+  padding-bottom: 2.2mm; margin-bottom: 8mm;
+  font-size: 8.5pt; letter-spacing: 0.07em; color: var(--gray);
+}
+.rh b { color: var(--ink); font-weight: 700; letter-spacing: 0.02em; }
+
+.fo {
+  position: absolute; left: 22mm; right: 22mm; bottom: 11mm;
+  display: flex; justify-content: space-between;
+  border-top: 0.2mm solid var(--hair); padding-top: 2mm;
+  font-size: 8pt; color: var(--faint); letter-spacing: 0.05em;
+}
+
+/* ── 활자 ──────────────────────────────── */
+.doc-title { font-size: 30pt; font-weight: 700; letter-spacing: -0.025em; line-height: 1.18; }
+h2 { font-size: 16.5pt; font-weight: 700; letter-spacing: -0.015em; line-height: 1.3; }
+h3 { font-size: 11.5pt; font-weight: 700; letter-spacing: -0.005em; margin-bottom: 2mm; }
+p  { font-size: 10pt; line-height: 1.68; }
+p + p { margin-top: 3mm; }
+
+.lede { font-size: 12pt; line-height: 1.62; color: var(--ink); }
+.cap  { font-size: 8.5pt; line-height: 1.5; color: var(--gray); }
+.lab  { font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); }
+.lab-g{ font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; color: var(--gray); }
+.em   { color: var(--accent); font-weight: 700; }
+.q    { font-size: 11pt; line-height: 1.62; color: var(--ink); }
+
+/* ── 배치 ──────────────────────────────── */
+.sec { margin-bottom: 7mm; }
+.sec-hd { border-bottom: 0.2mm solid var(--hair); padding-bottom: 2mm; margin-bottom: 4mm; }
+.row { display: flex; gap: 7mm; }
+.col { flex: 1; }
+.grow { flex: 1; }
+.spread { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.tri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+
+/* ── 수치 ──────────────────────────────── */
+.stats { display: flex; gap: 11mm; }
+.stat .v { font-size: 25pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.stat .k { font-size: 8pt; color: var(--gray); margin-top: 1.5mm; letter-spacing: 0.03em; }
+
+/* ── 표 ────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+th, td { text-align: left; padding: 2.6mm 3mm 2.6mm 0; vertical-align: top; line-height: 1.5; }
+thead th {
+  font-size: 8pt; font-weight: 700; letter-spacing: 0.06em; color: var(--gray);
+  border-bottom: 0.4mm solid var(--rule); padding-bottom: 1.8mm;
+}
+tbody tr + tr td { border-top: 0.2mm solid var(--hair); }
+td.n { white-space: nowrap; font-weight: 700; }
+
+/* 가정 vs 반응 */
+.ab td { width: 50%; }
+.ab td:first-child { color: var(--gray); padding-right: 6mm; }
+.ab td:last-child  { font-weight: 700; padding-left: 6mm; border-left: 0.2mm solid var(--hair); }
+
+/* ── 단계 ──────────────────────────────── */
+.steps { list-style: none; counter-reset: s; }
+.steps li {
+  counter-increment: s; position: relative;
+  padding-left: 9mm; padding-bottom: 3.2mm; font-size: 10pt; line-height: 1.6;
+}
+.steps li::before {
+  content: counter(s, decimal-leading-zero);
+  position: absolute; left: 0; top: 0.1em;
+  font-size: 8.5pt; font-weight: 700; color: var(--faint); letter-spacing: 0.04em;
+}
+.steps li b { display: block; }
+
+/* ── 인용·강조 블록 ────────────────────── */
+.note {
+  background: var(--tint); padding: 4.5mm 5mm; margin-top: 4mm;
+  font-size: 9.5pt; line-height: 1.62;
+}
+.pull {
+  border-left: 0.6mm solid var(--accent); padding-left: 5mm;
+  font-size: 11.5pt; line-height: 1.58; font-weight: 700;
+}
+
+/* ── 그림 ──────────────────────────────── */
+.shot { width: 100%; display: block; border: 0.2mm solid var(--hair); }
+figure { margin: 0; }
+figcaption { font-size: 8pt; color: var(--gray); margin-top: 1.8mm; line-height: 1.5; }
+
+/* ── 표지 ──────────────────────────────── */
+.cover { justify-content: flex-start; padding: 24mm 22mm 20mm; }
+.cover .top { border-bottom: 0.45mm solid var(--rule); padding-bottom: 3mm;
+              display: flex; justify-content: space-between; font-size: 8.5pt;
+              letter-spacing: 0.07em; color: var(--gray); }
+.cover .mid { margin-top: 20mm; }
+.cover .bot { margin-top: auto; }
+.cover .bot { border-top: 0.2mm solid var(--hair); padding-top: 4mm; font-size: 9pt; color: var(--gray); }
+.toc { list-style: none; font-size: 9.5pt; }
+.toc li { display: flex; gap: 4mm; padding: 2mm 0; border-top: 0.2mm solid var(--hair); }
+.toc li:last-child { border-bottom: 0.2mm solid var(--hair); }
+.toc .no { color: var(--faint); font-weight: 700; width: 7mm; }
+.toc .tt { flex: 1; font-weight: 700; }
+.toc .dd { color: var(--gray); flex: 1.5; }
+
+/* ── 하단 수치 바 ──────────────────────── */
+.footbar { display: flex; align-items: flex-end; gap: 13mm; }
+.footbar .stat .v { font-size: 27pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.footbar .stat .k { font-size: 8pt; color: var(--gray); margin-top: 1.5mm; letter-spacing: 0.03em; }
+.footbar .tail { margin-left: auto; text-align: right; line-height: 1.5; }
+
+/* ── PDF 클릭 링크 ─────────────────────── */
+a.lk { color: var(--accent); text-decoration: none; border-bottom: 0.2mm solid var(--accent); font-weight: 700; }
+.who .c a, .bot a, .fo a { color: inherit; text-decoration: none; }

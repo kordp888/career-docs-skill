@@ -1,0 +1,134 @@
+/* 과제·제안서 조판 (16:9 · 960×540pt) */
+@page { size: 338.67mm 190.5mm; margin: 0; }
+:root{
+  --navy:#14213D; --ink:#1E293B; --gray:#5B6675; --faint:#98A2B3;
+  --line:#DCE3EC; --tint:#F4F6F9; --paper:#FFFFFF;
+  --warn:#EF6A5B; --warm:#FFF5E8;
+  --acc:#16A085; --acc-soft:#E6F6F1;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Apple SD Gothic Neo","Noto Sans CJK KR",sans-serif;color:var(--ink);background:var(--paper);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;font-feature-settings:"tnum"}
+.pg{width:338.67mm;height:190.5mm;padding:14mm 16mm 12mm;page-break-after:always;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;background:var(--paper)}
+.pg:last-child{page-break-after:auto}
+.kick{font-size:8pt;letter-spacing:.12em;color:var(--acc);font-weight:700;margin-bottom:3mm}
+h1{font-size:22pt;font-weight:800;letter-spacing:-.02em;line-height:1.25;color:var(--navy)}
+h2{font-size:19pt;font-weight:800;letter-spacing:-.02em;line-height:1.3;color:var(--navy);margin-bottom:2.5mm}
+.lede{font-size:10.5pt;color:var(--gray);line-height:1.6;max-width:240mm}
+p{font-size:9.6pt;line-height:1.62}
+.body{flex:1;margin-top:7mm}
+.fo{position:absolute;left:16mm;right:16mm;bottom:6.5mm;display:flex;justify-content:space-between;
+  font-size:7.5pt;color:var(--faint);letter-spacing:.04em;border-top:.25mm solid var(--line);padding-top:2mm}
+.rule{height:.7mm;background:var(--acc);width:22mm;margin:4mm 0 5mm}
+
+/* 표지 */
+.cover{background:var(--navy);color:#fff;padding:20mm 22mm}
+.cover .kick{color:#9FE3D3}
+.cover h1{color:#fff;font-size:30pt;max-width:220mm;margin-top:4mm}
+.cover .sub{font-size:12pt;color:#C9D3E3;margin-top:5mm}
+.cover .claim{margin-top:14mm;background:#1E2F55;border-left:1.2mm solid var(--acc);padding:6mm 8mm;max-width:250mm}
+.cover .claim .lab{font-size:8pt;letter-spacing:.12em;color:#9FE3D3;font-weight:700;margin-bottom:2mm}
+.cover .claim p{font-size:12.5pt;line-height:1.55;color:#fff;font-weight:600}
+.cover .cred{margin-top:auto;display:flex;gap:12mm;align-items:flex-end;justify-content:space-between}
+.cover .cred .who{font-size:10pt;color:#C9D3E3}
+.cover .cred .who b{color:#fff;font-size:12pt;display:block;margin-bottom:1mm}
+.cover .cred .exp{font-size:9pt;color:#C9D3E3;max-width:150mm;line-height:1.55;text-align:right}
+.cover .cred .exp b{color:#9FE3D3}
+.cover .fo{color:#7F8DA6;border-top-color:#2B3D63}
+
+/* 표 */
+table{width:100%;border-collapse:collapse;font-size:9pt}
+th,td{text-align:left;vertical-align:top;padding:2.4mm 3mm;line-height:1.5;border-bottom:.25mm solid var(--line)}
+thead th{font-size:7.8pt;letter-spacing:.06em;color:var(--gray);font-weight:700;border-bottom:.45mm solid var(--navy);background:var(--tint)}
+td.id{font-weight:800;color:var(--navy);white-space:nowrap;width:22mm}
+td.k{font-weight:700;color:var(--navy);white-space:nowrap}
+td.p0{color:var(--warn);font-weight:800;white-space:nowrap}
+td.p1{color:var(--acc);font-weight:800;white-space:nowrap}
+tr.pick td{background:var(--acc-soft)}
+.tag{display:inline-block;font-size:7.5pt;font-weight:700;padding:.6mm 2mm;border-radius:1mm;background:var(--acc-soft);color:var(--acc);letter-spacing:.03em}
+.tag.warn{background:#FDECEA;color:var(--warn)}
+.tag.gray{background:var(--tint);color:var(--gray)}
+.tag.navy{background:var(--navy);color:#fff}
+
+/* 흐름 */
+.flow{display:flex;align-items:stretch;gap:0}
+.flow .st{flex:1;background:var(--paper);border:.3mm solid var(--line);border-radius:1.5mm;padding:4mm 4mm;position:relative}
+.flow .st.on{background:var(--acc-soft);border-color:var(--acc)}
+.flow .st.warm{background:var(--warm)}
+.flow .st.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.flow .st .n{font-size:7.5pt;font-weight:800;color:var(--faint);letter-spacing:.08em;margin-bottom:1.5mm}
+.flow .st.dark .n{color:#9FE3D3}
+.flow .st b{display:block;font-size:10.5pt;color:var(--navy);margin-bottom:1.5mm;letter-spacing:-.01em}
+.flow .st.dark b{color:#fff}
+.flow .st small{font-size:8.4pt;color:var(--gray);line-height:1.5;display:block}
+.flow .st.dark small{color:#C9D3E3}
+.flow .ar{width:7mm;display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:12pt;flex:none}
+.lane{display:grid;grid-template-columns:34mm 1fr;gap:4mm;align-items:start}
+.lane .lab{font-size:9pt;font-weight:800;color:var(--navy);padding-top:4mm}
+.lane .lab small{display:block;font-weight:400;color:var(--gray);font-size:8pt;margin-top:1mm}
+
+/* 메시지 */
+.chat{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+.chat .th{background:var(--tint);border:.3mm solid var(--line);border-radius:2mm;padding:4mm;display:flex;flex-direction:column;gap:3mm;min-height:96mm}
+.chat .hd{display:flex;justify-content:space-between;align-items:baseline;font-size:8.5pt;color:var(--gray);border-bottom:.25mm solid var(--line);padding-bottom:2mm}
+.chat .hd b{color:var(--navy);font-size:10pt}
+.bub{background:#fff;border:.3mm solid var(--line);border-radius:3mm 3mm 3mm .8mm;padding:3.2mm 4mm;font-size:9.2pt;line-height:1.6;max-width:96%}
+.bub.me{align-self:flex-end;background:var(--acc-soft);border-color:#BFE8DC;border-radius:3mm 3mm .8mm 3mm}
+.bub .t{display:block;font-size:7.2pt;color:var(--faint);margin-top:1.5mm}
+.chat .why{margin-top:auto;font-size:8.2pt;color:var(--gray);line-height:1.5;border-top:.25mm dashed var(--line);padding-top:2mm}
+.chat .why b{color:var(--navy)}
+
+/* 스키마·양식 */
+.schema{font-family:"SF Mono",Menlo,monospace;font-size:8.6pt;line-height:1.7;background:var(--navy);color:#E8EDF5;border-radius:2mm;padding:5mm 6mm;white-space:pre}
+.schema .c{color:#9FE3D3}.schema .s{color:#FFD59E}.schema .m{color:#7F8DA6}
+.form{border:.3mm solid var(--line);border-radius:2mm;overflow:hidden}
+.form .row{display:grid;grid-template-columns:34mm 1fr;border-bottom:.25mm solid var(--line)}
+.form .row:last-child{border-bottom:0}
+.form .row>div:first-child{background:var(--tint);padding:2.6mm 3.5mm;font-size:8.3pt;font-weight:700;color:var(--gray);letter-spacing:.03em}
+.form .row>div:last-child{padding:2.6mm 4mm;font-size:9.2pt;line-height:1.55}
+.form .row.hi>div:last-child{background:var(--warm)}
+
+/* 2열·박스 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:7mm}
+.g23{display:grid;grid-template-columns:2fr 3fr;gap:7mm}
+.box{border:.3mm solid var(--line);border-radius:2mm;padding:4.5mm 5mm}
+.box.tint{background:var(--tint)}
+.box.soft{background:var(--acc-soft);border-color:#BFE8DC}
+.box.warm{background:var(--warm);border-color:#F3DFC6}
+.box.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.box h3{font-size:10.5pt;font-weight:800;color:var(--navy);margin-bottom:2.5mm;letter-spacing:-.01em}
+.box.dark h3{color:#9FE3D3}
+.box p,.box li{font-size:9.2pt;line-height:1.6}
+.box.dark p{color:#E8EDF5}
+ul.cl{list-style:none}
+ul.cl li{padding-left:5mm;position:relative;margin-bottom:1.2mm}
+ul.cl li::before{content:"";position:absolute;left:0;top:.5em;width:2.2mm;height:2.2mm;border-radius:50%;background:var(--acc)}
+ul.cl.x li::before{background:var(--warn)}
+.note{margin-top:5mm;padding:3.5mm 5mm;background:var(--tint);border-left:1mm solid var(--acc);font-size:9pt;line-height:1.6}
+.note.me{border-left-color:var(--navy);background:#F0F3F8}
+.note.me b{color:var(--navy)}
+
+/* 타임라인 */
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.tl .ph{border-top:1.4mm solid var(--line);padding-top:3mm}
+.tl .ph.on{border-top-color:var(--acc)}
+.tl .ph .d{font-size:8pt;font-weight:800;color:var(--acc);letter-spacing:.06em}
+.tl .ph b{display:block;font-size:11pt;color:var(--navy);margin:1.5mm 0 2mm}
+.tl .ph p{font-size:9pt;color:var(--gray)}
+
+/* 매트릭스 */
+.mx{display:grid;grid-template-columns:26mm 1fr 1fr;grid-template-rows:auto 1fr 1fr auto;gap:0;height:108mm}
+.mx .cell{border:.3mm solid var(--line);padding:3.5mm;position:relative}
+.mx .cell.hot{background:#FDECEA}
+.mx .cell.mid{background:var(--warm)}
+.mx .cell.low{background:var(--tint)}
+.mx .cell .z{font-size:7.5pt;font-weight:800;letter-spacing:.06em;color:var(--gray)}
+.mx .ax{display:flex;align-items:center;justify-content:center;font-size:8.5pt;font-weight:700;color:var(--gray);padding:2mm}
+.mx .ax.v{text-align:center;line-height:1.4;padding:2mm 3mm}
+.dot{display:inline-flex;align-items:center;gap:2mm;margin-top:2mm;font-size:9pt}
+.dot i{width:3.4mm;height:3.4mm;border-radius:50%;background:var(--warn);display:inline-block;flex:none}
+.dot i.a{background:var(--acc)}.dot i.g{background:var(--faint)}
+.big{font-size:26pt;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.mono{font-family:"SF Mono",Menlo,monospace;font-size:8.6pt}
