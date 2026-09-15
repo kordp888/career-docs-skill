@@ -4,6 +4,10 @@
 경력과 숫자를 정본 하나에 묶고, AI 가 쓴 티를 기계로 검사하고, 산출물에서 생성 도구
 표식을 지웁니다.
 
+<p align="center">
+  <img src="docs/checker.png" alt="ai-tell-check 실행 결과. 파일별로 걸린 규칙과 고치는 법, E 등급이 있으면 종료 코드 1." width="860">
+</p>
+
 > **English.** A Claude Code skill for producing job application documents.
 > It pins every date and metric to a single source-of-truth file, runs a Korean
 > "AI tell" linter over the output, exports print quality PDFs from HTML and PPTX,
