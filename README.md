@@ -45,6 +45,23 @@
 | 검사 | 한국어 AI 티 규칙 18종을 정규식으로 검사하고 종료 코드로 알립니다 |
 | 정리 | PDF·PPTX 메타데이터에서 생성 도구 표식 제거 |
 
+## 산출물은 두 벌입니다
+
+변환기는 원본을 지우지 않습니다. 고칠 수 있는 파일과 제출할 파일이 항상 짝으로
+남습니다.
+
+`html2pdf.sh` 는 HTML 을 A4 PDF 로 바꿉니다. HTML 이 편집본이고 PDF 가 제출본입니다.
+글자 하나를 고치려고 PDF 편집기를 열 일이 없습니다. HTML 을 고치고 다시 돌리면
+됩니다.
+
+`pptx2pdf.sh` 는 PPTX 를 PDF 로 바꿉니다. PPTX 는 그대로 두므로 파워포인트에서
+언제든 고칠 수 있고, PDF 는 상대가 어느 기기에서 열어도 같게 보입니다. 기업에
+보낼 때 이 두 벌을 같이 보냅니다. 상대가 내용을 손보고 싶어 하는 경우가 있고,
+그때 PDF 만 있으면 다시 만들어 달라는 요청이 돌아옵니다.
+
+서체 치환 인자를 주더라도 사본에서만 바꿉니다. 원본 PPTX 의 서체 선언은 건드리지
+않아서, 원래 환경에서 열면 그대로 열립니다.
+
 ## 설치
 
 ```bash
@@ -62,9 +79,14 @@ Claude Code 에서 이력서나 포트폴리오 작업을 시작하면 자동으
 
 ```bash
 python3 tools/ai-tell-check.py "docs/**/*.md" out.html deck.pptx
+
+# HTML -> PDF. docs/resume.html 은 그대로 남습니다
 ./tools/html2pdf.sh docs/resume.html out/resume.pdf
+
+# PPTX -> PDF. deck.pptx 는 그대로 남습니다 (편집본 + 제출본)
 ./tools/pptx2pdf.sh deck.pptx out "Noto Sans CJK KR=Noto Sans KR"
-python3 tools/strip-meta.py out/*.pdf --author "홍길동" --title "이력서"
+
+python3 tools/strip-meta.py out/*.pdf deck.pptx --author "홍길동" --title "이력서"
 ```
 
 의존성은 얕습니다. 변환은 시스템 Chrome 과 LibreOffice, 검사는 파이썬 표준
