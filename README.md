@@ -1,5 +1,7 @@
 # career-docs
 
+[![verify](https://github.com/kordp888/career-docs-skill/actions/workflows/verify.yml/badge.svg)](https://github.com/kordp888/career-docs-skill/actions/workflows/verify.yml)
+
 취업 서류를 만들고 인쇄 품질 PDF 로 내보내는 Claude Code 스킬입니다.
 경력과 숫자를 정본 하나에 묶고, AI 가 쓴 티를 기계로 검사하고, 산출물에서 생성 도구
 표식을 지웁니다.
@@ -159,6 +161,14 @@ XML 을 읽습니다. 마크다운의 코드 블록과 인라인 코드는 검�
 
 **영어 글은 규칙 일부만 걸립니다.** 마케팅 상투어 열 몇 개를 보고 나머지는 한국어
 기준입니다. 변환과 폰트 쪽 도구는 언어와 무관하게 씁니다.
+
+## 푸시마다 자동으로 확인하는 것
+
+| 단계 | 확인 | 실패하면 |
+|---|---|---|
+| 1 도구 | 검사기가 위반을 잡고 종료 코드 1 을 내는가, HTML→PDF 가 실제로 나오는가, 메타데이터가 지워지는가 | 도구가 말로만 도는 것 |
+| 2 자기검사 | README·SKILL·참고 문서를 자기 검사기로 검사 | 검사기를 만든 저장소가 검사에 걸린 것 |
+| 3 비밀 | 토큰·전화번호 패턴 | 예제에 실제 연락처가 들어간 것 |
 
 ## 라이선스
 
